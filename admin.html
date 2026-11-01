@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>لوحة إدارة الاشتراكات</title>
+<style>
+:root{color-scheme:dark;--bg:#080d10;--card:#101b20;--line:#294047;--green:#30d6a2;--muted:#a9c0c5;--red:#ff737d}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at top,#102a27,var(--bg) 60%);color:#f4fbfa;font-family:Tahoma,Arial,sans-serif;display:grid;place-items:center;padding:22px}
+main{width:min(100%,540px);background:linear-gradient(145deg,#142329,#0c1418);border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:0 24px 70px #0007}
+h1{font-size:25px;margin:0 0 8px}p{color:var(--muted);line-height:1.8;font-size:14px}.field{margin:18px 0}label{display:block;font-size:14px;font-weight:bold;margin-bottom:8px}input{width:100%;border:1px solid var(--line);background:#091115;color:white;padding:14px;border-radius:12px;font-size:16px;outline:none}input:focus{border-color:var(--green)}button{border:0;border-radius:12px;padding:14px 18px;font-weight:bold;font-size:15px;cursor:pointer}#create{width:100%;background:var(--green);color:#05251c;margin-top:8px}#copy{background:#1b2a30;color:#fff;border:1px solid var(--line)}button:disabled{opacity:.6;cursor:wait}.result{display:none;margin-top:20px;padding:16px;border:1px solid #1b765d;background:#0b2821;border-radius:14px}.code{direction:ltr;text-align:center;font-size:23px;font-weight:bold;letter-spacing:2px;word-break:break-all;margin:12px 0;color:var(--green)}.msg{margin-top:16px;font-size:14px;line-height:1.7}.err{color:var(--red)}.small{font-size:12px;color:var(--muted)}
+</style></head>
+<body><main>
+<h1>لوحة إدارة الاشتراكات</h1><p>اكتب السر الإداري الذي أضفته في Vercel، وحدد مدة الاشتراك، ثم اضغط إنشاء كود. السر يُستخدم لإرسال الطلب فقط ولا يتم حفظه في هذه الصفحة.</p>
+<div class="field"><label for="secret">السر الإداري (ADMIN_SECRET)</label><input id="secret" type="password" autocomplete="off" placeholder="اكتب السر الإداري هنا" required></div>
+<div class="field"><label for="days">مدة الاشتراك بالأيام</label><input id="days" type="number" min="1" max="3650" value="30" required></div>
+<button id="create">إنشاء كود اشتراك</button>
+<div id="result" class="result"><strong>تم إنشاء الكود بنجاح</strong><div id="code" class="code"></div><div class="small" id="duration"></div><button id="copy">نسخ الكود</button><p class="small">الكود يُستخدم مرة واحدة فقط. احتفظ به وارسله للمشترك.</p></div>
+<div id="message" class="msg" role="status"></div>
+<p class="small">إذا ظهر خطأ 401، تأكد أن السر يطابق قيمة ADMIN_SECRET في Vercel. إذا ظهر خطأ متعلق بقاعدة البيانات، تأكد من تشغيل schema.sql ثم أعد نشر المشروع.</p>
+</main>
+<script>
+const $=id=>document.getElementById(id);let currentCode='';
+$('create').addEventListener('click',async()=>{
+ const secret=$('secret').value;const days=Number($('days').value);$('message').textContent='';$('message').className='msg';$('result').style.display='none';
+ if(!secret){$('message').textContent='اكتب السر الإداري أولًا.';$('message').classList.add('err');return}
+ if(!Number.isInteger(days)||days<1||days>3650){$('message').textContent='اكتب مدة من يوم إلى 3650 يومًا.';$('message').classList.add('err');return}
+ $('create').disabled=true;$('create').textContent='جاري إنشاء الكود...';
+ try{const r=await fetch('/api/admin-create-code',{method:'POST',headers:{'Content-Type':'application/json','x-admin-secret':secret},body:JSON.stringify({days})});let data={};try{data=await r.json()}catch{}
+ if(!r.ok)throw new Error(data.error||('فشل الطلب (HTTP '+r.status+').'));
+ currentCode=data.code;$('code').textContent=currentCode;$('duration').textContent='مدة الاشتراك: '+data.days+' يوم';$('result').style.display='block';$('message').textContent='الكود جاهز. انسخه وجرّب تفعيله من صفحة الاشتراك.';
+ }catch(e){$('message').textContent=e.message||'حصل خطأ غير متوقع.';$('message').classList.add('err')}
+ finally{$('create').disabled=false;$('create').textContent='إنشاء كود اشتراك'}
+});
+$('copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(currentCode);$('copy').textContent='تم النسخ ✓'}catch{$('message').textContent='تعذر النسخ تلقائيًا؛ ظلل الكود وانسخه يدويًا.'}});
+</script></body></html>

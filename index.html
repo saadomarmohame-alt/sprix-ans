@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f4f1e9">
+<title>SPRIX / QUREO — العضوية</title>
+<style>
+:root{
+  color-scheme:dark;
+  --page:#080d12;
+  --surface:#101820;
+  --surface-2:#1a2730;
+  --ink:#edf5f1;
+  --muted:#9baea7;
+  --line:#283a3d;
+  --primary:#35d6a0;
+  --primary-hover:#23bd89;
+  --primary-soft:#15382f;
+  --success:#59e0ae;
+  --danger:#ff8f98;
+  --danger-bg:#351d24;
+  --shadow:0 24px 80px rgba(0,0,0,.42);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;min-height:100vh;display:grid;place-items:center;padding:26px;
+  background:
+    radial-gradient(ellipse at 12% 10%,rgba(53,214,160,.13),transparent 34%),
+    radial-gradient(ellipse at 92% 90%,rgba(47,112,145,.12),transparent 32%),
+    var(--page);
+  font-family:Tahoma,Arial,sans-serif;color:var(--ink)
+}
+main{width:min(100%,510px)}
+.brand-row{display:flex;align-items:center;justify-content:center;gap:11px;margin-bottom:22px}
+.logo{width:42px;height:42px;border-radius:14px;background:var(--primary);color:#06271d;display:grid;place-items:center;font-weight:900;font-size:15px;box-shadow:0 8px 22px rgba(53,214,160,.17)}
+.brand-name{font-size:13px;font-weight:800;letter-spacing:1.8px;color:var(--primary)}
+h1{text-align:center;font-size:clamp(27px,6vw,34px);letter-spacing:-.7px;line-height:1.4;margin:0 0 10px}
+.intro{text-align:center;color:var(--muted);font-size:14px;line-height:1.95;max-width:390px;margin:0 auto 25px}
+.card{background:linear-gradient(155deg,rgba(18,29,37,.98),rgba(13,22,29,.98));border:1px solid rgba(54,79,79,.75);border-radius:24px;padding:clamp(20px,5vw,30px);box-shadow:var(--shadow)}
+.card-head{display:flex;align-items:center;gap:12px;padding-bottom:20px;border-bottom:1px solid var(--line);margin-bottom:20px}
+.icon-wrap{width:44px;height:44px;flex-shrink:0;border-radius:15px;background:var(--primary-soft);color:var(--primary);display:grid;place-items:center}
+.card-head h2{font-size:17px;margin:0 0 5px}
+.card-head p{font-size:12px;color:var(--muted);margin:0;line-height:1.7}
+label{display:block;font-size:13px;font-weight:700;margin:16px 0 8px}
+input{width:100%;padding:15px 16px;border:1px solid #31464a;border-radius:13px;background:#0a1117;color:var(--ink);font:inherit;font-size:15px;outline:none;transition:border-color .18s,box-shadow .18s}
+input::placeholder{color:#71847e}
+input:focus{border-color:var(--primary);box-shadow:0 0 0 4px rgba(53,214,160,.10)}
+button{width:100%;border:0;border-radius:13px;padding:15px;margin-top:14px;font:inherit;font-size:14px;font-weight:800;cursor:pointer;transition:transform .15s,background .15s,opacity .15s}
+button:active{transform:scale(.99)}
+button:disabled{opacity:.55;cursor:wait}
+button.primary{background:var(--primary);color:#06271d;box-shadow:0 8px 22px rgba(53,214,160,.13)}
+button.primary:hover{background:var(--primary-hover)}
+button.secondary{background:var(--surface-2);color:var(--ink);border:1px solid #2c4146}
+button.secondary:hover{background:#22343d}
+.status{display:flex;align-items:flex-start;gap:10px;padding:14px;border:1px solid var(--line);border-radius:13px;background:#0b1319;color:var(--muted);font-size:13px;line-height:1.9;overflow-wrap:anywhere}
+.status:before{content:"";display:block;width:8px;height:8px;flex:0 0 8px;border-radius:50%;background:#71847e;margin-top:7px}
+.status.ok{border-color:#245846;background:#10291f;color:var(--success)}
+.status.ok:before{background:var(--success)}
+.status.bad{border-color:#63333b;background:var(--danger-bg);color:var(--danger)}
+.status.bad:before{background:var(--danger)}
+.footnote{display:flex;align-items:flex-start;gap:9px;margin:18px 8px 0;color:var(--muted);font-size:11px;line-height:1.9}
+.footnote svg{flex-shrink:0;margin-top:2px}
+.footer{text-align:center;color:#657970;font-size:11px;margin-top:22px;letter-spacing:.2px}
+@media(max-width:420px){body{padding:17px}.card{border-radius:20px}.brand-row{margin-bottom:18px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+  <div class="brand-row">
+    <div class="logo">SQ</div>
+    <div class="brand-name">SPRIX · QUREO</div>
+  </div>
+  <h1>مساحتك التعليمية، باشتراكك</h1>
+  <p class="intro">فعّل اشتراكك في ثواني باستخدام كود العضوية، وتابع حالة اشتراكك من نفس المتصفح.</p>
+
+  <section class="card">
+    <div class="card-head">
+      <div class="icon-wrap" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M12 14v3"/></svg>
+      </div>
+      <div>
+        <h2>تفعيل العضوية</h2>
+        <p>لا تحتاج إلى إنشاء حساب أو إدخال بريد إلكتروني.</p>
+      </div>
+    </div>
+
+    <div id="status" class="status" aria-live="polite">جارٍ فحص حالة الاشتراك...</div>
+    <form id="redeem">
+      <label for="code">كود الاشتراك</label>
+      <input id="code" placeholder="مثال: ABC123-XYZ" autocomplete="off" required minlength="6" maxlength="64" spellcheck="false">
+      <button id="activate" class="primary" type="submit">تفعيل الاشتراك</button>
+    </form>
+    <button id="refresh" class="secondary" type="button">تحديث حالة الاشتراك</button>
+  </section>
+
+  <div class="footnote">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 7h.01"/></svg>
+    <span>الاشتراك مرتبط بالمتصفح الحالي. مسح بيانات المتصفح أو الانتقال إلى جهاز آخر قد يمنع استعادته تلقائيًا.</span>
+  </div>
+  <div class="footer">بوابة العضوية · SPRIX / QUREO</div>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+function message(text,type=""){ $("status").textContent=text; $("status").className="status"+(type?" "+type:""); }
+function getDeviceToken(){
+  let token=localStorage.getItem("sprix_membership_device");
+  if(!token){const bytes=new Uint8Array(32);crypto.getRandomValues(bytes);token=Array.from(bytes,b=>b.toString(16).padStart(2,"0")).join("");localStorage.setItem("sprix_membership_device",token);}
+  return token;
+}
+async function callApi(path,body){
+  const r=await fetch(path,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({...body,deviceToken:getDeviceToken()})});
+  const data=await r.json().catch(()=>({error:"رد غير مفهوم من السيرفر"}));
+  if(!r.ok)throw new Error(data.error||"حصل خطأ");
+  return data;
+}
+async function refresh(){
+  const btn=$("refresh");btn.disabled=true;
+  try{
+    const d=await callApi("/api/status",{});
+    if(d.active)message("اشتراكك فعّال حتى: "+new Date(d.expiresAt).toLocaleString("ar-EG"),"ok");
+    else message("لا يوجد اشتراك فعّال على هذا المتصفح. أدخل كود الاشتراك لتفعيله.","bad");
+  }catch(e){message(e.message,"bad");}
+  finally{btn.disabled=false;}
+}
+$("redeem").addEventListener("submit",async e=>{
+  e.preventDefault();const btn=$("activate");btn.disabled=true;btn.textContent="جارٍ التفعيل...";
+  try{
+    const d=await callApi("/api/redeem",{code:$("code").value.trim()});
+    message("تم تفعيل الاشتراك لمدة "+d.days+" يوم. تاريخ الانتهاء: "+new Date(d.expiresAt).toLocaleString("ar-EG"),"ok");
+    $("code").value="";
+  }catch(err){message(err.message,"bad");}
+  finally{btn.disabled=false;btn.textContent="تفعيل الاشتراك";}
+});
+$("refresh").onclick=refresh;refresh();
+</script>
+</body>
+</html>
